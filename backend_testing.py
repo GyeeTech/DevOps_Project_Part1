@@ -3,7 +3,7 @@ import pymysql
 
 # Defining user details to be created
 new_user_data = {
-    'user_id': 27,
+    'user_id': 28,
     'user_name': 'Wyclif'
 }
 
@@ -13,11 +13,9 @@ def post_user_data():
     new_user_id = new_user_data['user_id']
     print('userid:', new_user_id)
     url = f"http://127.0.0.1:5000/users/{new_user_id}"
-    json_data = {
-        "user_id": new_user_data['user_id'],
-        "user_name": new_user_data['user_name']
-    }
-    response = requests.post(url, json=json_data)
+
+
+    response = requests.post(url, json=new_user_data)
 
     print(f"Response from POST: {response.text}")
     print(f"Status from POST: {response.status_code}")

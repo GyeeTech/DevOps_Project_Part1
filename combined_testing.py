@@ -3,7 +3,7 @@ import pymysql
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 
 # Define user data
 new_user_data = {'userID': 28, 'userName': 'Lebron James'}

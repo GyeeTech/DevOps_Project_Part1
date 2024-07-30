@@ -6,8 +6,10 @@ def dataBaseConnector():
     schema_name = "mydb"
     host = "127.0.0.1"
     port = 3306
-    user = os.getenv("DB_USER", "default_user")  # Using environment variables or a secure way to configure
-    password = os.getenv("DB_PASSWORD", "default_password")
+    # user = 'user'
+    # password = 'password'
+    user = os.getenv("DB_USER", "user")  # Using environment variables or a secure way to configure
+    password = os.getenv("DB_PASSWORD", "password")
 
     try:
         conn = pymysql.connect(host=host, port=port, user=user, passwd=password, db=schema_name)
@@ -91,7 +93,7 @@ def deleteRecords(userID):
 
 # Example test calls (uncomment for testing)
 # print(readRecord(userID=2))
-# print(createRecords(13, "Kwame"))
+# print(createRecords(27, "Bright"))
 # print(updateRecords(userID=13, userName="Kwame_Bruce"))
 # print(deleteRecords(userID=1))
 # print(readRecord(3))

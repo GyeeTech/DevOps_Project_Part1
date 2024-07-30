@@ -15,7 +15,8 @@ def handle_exception(e):
 @app.route("/users/<user_id>", methods=["POST", "GET", "PUT", "DELETE"])
 def httpMethod(user_id):
     if request.method == "POST":
-        return addUser(user_id)
+        userName = request.json.get("user_name")
+        return addUser(user_id, userName)
     elif request.method == "GET":
         return retrieveUser(user_id)
     elif request.method == "PUT":
@@ -27,14 +28,14 @@ def retrieveUser(user_id):
     result = db_connector.readRecord(user_id)
     if not result["Success"]:
         return jsonify(status="error", Reason="No such id"), 404
-    return jsonify(userName=result["user_name"]), 200
+    return jsonify(userName=result["userName"]), 200
 
 def updateUser(user_id):
     userName = request.json.get("user_name")
     result = db_connector.updateRecords(user_id, userName)
     if not result["Success"]:
         return jsonify(status="error", Reason="No such id"), 404
-    return jsonify(userName=result["user_name"]), 200
+    return jsonify(userName=result["userName"]), 200
 
 def deleteUser(user_id):
     result = db_connector.deleteRecords(user_id)
@@ -42,8 +43,8 @@ def deleteUser(user_id):
         return jsonify(status="error", Reason="No such id"), 404
     return jsonify(userName=result["user_name"]), 200
 
-def addUser(user_id):
-    userName = request.json.get("user_name")
+def addUser(user_id, userName):
+    # userName = request.json.get("user_name")
     db_connector.createRecords(user_id, userName)
     return jsonify(status="ok", user_added={"user_id": user_id, "user_name": userName}), 201
 
