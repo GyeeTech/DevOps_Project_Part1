@@ -3,8 +3,8 @@ import pymysql
 
 # Defining user details to be created
 new_user_data = {
-    'user_id': 28,
-    'user_name': 'Wyclif'
+    'user_id': 31,
+    'user_name': 'Bill Clinton'
 }
 
 
